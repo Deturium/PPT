@@ -7,8 +7,8 @@
 ### 基本功能
 
 [x] 高桥流布局
-[ ] markdown 到 PPT 生成
-[ ] 翻页
+[x] markdown 到 PPT 生成
+[x] 翻页
 
 
 

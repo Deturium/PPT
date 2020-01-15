@@ -1,23 +1,14 @@
 <template lang="pug">
-  .slide(ref="slideDom")
-    .line
-      | 这就是传说中的
-    .line
-      | 高桥流
-    .line
-      | takahashi
+  .slide(ref="slideDom" v-html="content")
 </template>
 
 <script>
-export default {
-  name: 'slide',
 
-  mounted() {
-    const slideDom = this.$refs.slideDom
+// https://github.com/kuitos/takahashi-slides/blob/gh-pages/index.js#L254
+function scaleFont(slideDom) {
     const innerWidth = window.innerWidth
     const innerHeight = window.innerHeight
 
-    // https://github.com/kuitos/takahashi-slides/blob/gh-pages/index.js#L254
     Array
       .from(slideDom.children)
       .forEach(line => {
@@ -26,15 +17,27 @@ export default {
       })
 
     const scale = Math.min(innerHeight / slideDom.clientHeight, innerWidth / slideDom.clientWidth)
-		slideDom.style.transform = `scale(${scale * 0.77}) `
-  }
+    slideDom.style.transform = `scale(${scale * 0.77}) `
+}
+
+export default {
+  name: 'slide',
+  props: [
+    'content',
+  ],
+  mounted() {
+    scaleFont(this.$refs.slideDom)
+  },
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
   .slide
     font-size 16px
+    white-space pre-wrap
+    text-align center
 
-  .line
-    width: fit-content;
+    >p
+      margin 0
+      width fit-content
 </style>

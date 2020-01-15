@@ -2,7 +2,6 @@
   "name": "ppt",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "parcel index.html"
   },
@@ -23,6 +22,8 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.1.1",
+    "pug": "^2.0.4",
+    "stylus": "^0.54.7",
     "vue-template-compiler": "^2.6.11"
   }
 }

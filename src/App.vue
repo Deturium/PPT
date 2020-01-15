@@ -1,24 +1,39 @@
-<template>
-  <div class="container">
-    <h1>{{ message }}</h1>
-  </div>
+<template lang="pug">
+.backgroud
+  .ppt-root
+    ppt
 </template>
 
 <script>
+import PPT from './PPT'
+
 export default {
-  name: 'App',
-  data() {
-    return {
-      message: 'Using Parcel In A Vue.js App',
-    };
+  name: 'app',
+  components: {
+    ppt: PPT,
   },
 };
 </script>
 
-<style scoped>
-  .container {
-    width: 600px;
-    margin: 50px auto;
-    text-align: center;
-  }
+<style lang="stylus">
+  *
+    box-sizing border-box
+
+  html
+    font-family: Noto Sans CJK SC, PingFang SC, Hiragino Sans GB
+
+  body
+    margin 0
+
+  .backgroud
+    height 100vh
+    color #ccc
+    background-color #111
+
+  .ppt-root
+    position fixed
+    left 5%
+    right 5%
+    top 5%
+    bottom 5%
 </style>

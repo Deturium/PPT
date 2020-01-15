@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import ppt from '../ppt/takahashi.md'
 
 export default new Vue({
   data: {
@@ -8,4 +7,5 @@ export default new Vue({
   }
 })
 
+import ppt from '../ppt/takahashi.md'
 window.__PPT__ = ppt.split('<hr>').map(t => t.trim())

@@ -23,9 +23,11 @@ export default {
   methods: {
     nextSlide() {
       this.slideIndex += 1;
+      window.location.hash = this.slideIndex
     },
     prevSlide() {
       this.slideIndex -= 1;
+      window.location.hash = this.slideIndex
     },
     _keydownCallback(e) {
       const keyCode = e.keyCode;
@@ -43,6 +45,12 @@ export default {
     }
   },
   mounted() {
+    let hashIndex = parseInt(window.location.hash.slice(1), 10)
+    if (isNaN(hashIndex) || hashIndex < 0 || hashIndex > window.__PPT__.length - 1) {
+      hashIndex = 0
+    }
+
+    window.location.hash = this.slideIndex = hashIndex
     window.addEventListener("keydown", this._keydownCallback);
   },
   destroyed() {

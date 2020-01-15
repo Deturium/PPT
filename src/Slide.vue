@@ -17,7 +17,7 @@ function scaleFont(slideDom) {
       })
 
     const scale = Math.min(innerHeight / slideDom.clientHeight, innerWidth / slideDom.clientWidth)
-    slideDom.style.transform = `scale(${scale * 0.77}) `
+    slideDom.style.transform = `scale(${scale * 0.74}) `
 }
 
 export default {
@@ -25,19 +25,43 @@ export default {
   props: [
     'content',
   ],
-  mounted() {
-    scaleFont(this.$refs.slideDom)
+  methods: {
+    scaleFont() {
+      scaleFont(this.$refs.slideDom)
+    }
   },
+  mounted() {
+    this.scaleFont()
+    window.addEventListener('resize', this.scaleFont)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.scaleFont)
+  }
 };
 </script>
 
 <style lang="stylus">
   .slide
     font-size 16px
-    white-space pre-wrap
     text-align center
 
-    >p
+    >*
       margin 0
       width fit-content
+
+    p, div
+      white-space pre-wrap
+      text-align center
+
+    ol, ul
+      padding-left: .7em;
+      margin: 0.4em 0;
+
+    a
+      color: #3f51b5;
+      text-decoration: none;
+
+    a:hover
+      text-decoration: underline;
+
 </style>

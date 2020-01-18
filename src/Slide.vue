@@ -1,5 +1,6 @@
 <template lang="pug">
-  .slide(ref="slideDom" v-html="content")
+  .slide(ref="slideDom")
+    p(v-for="line in lines") {{ line }}
 </template>
 
 <script>
@@ -25,6 +26,13 @@ export default {
   props: [
     'content',
   ],
+  computed: {
+    lines() {
+      return this.content
+        ? this.content.split('\n').map(l => l.trim())
+        : []
+    }
+  },
   methods: {
     scaleFont() {
       scaleFont(this.$refs.slideDom)

@@ -5,6 +5,14 @@
   "scripts": {
     "dev": "parcel index.html"
   },
+  "staticFiles": {
+    "staticPath": [
+      {
+        "staticPath": "ppt",
+        "staticOutDir": "ppt"
+      }
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Deturium/PPT.git"
@@ -17,12 +25,12 @@
   "license": "MIT",
   "dependencies": {
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.2.1",
     "vue": "^2.6.11",
     "vue-hot-reload-api": "^2.3.4"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.1.1",
-    "marked": "^0.8.0",
     "pug": "^2.0.4",
     "stylus": "^0.54.7",
     "vue-template-compiler": "^2.6.11"

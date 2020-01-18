@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     content() {
-      return window.__PPT__[this.slideIndex];
+      return this.ppt[this.slideIndex];
     }
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
         }
       } else if (keyCode === 39 || keyCode === 40) {
         // ArrowDown | ArrowRight
-        if (this.slideIndex < window.__PPT__.length - 1) {
+        if (this.slideIndex < this.ppt.length - 1) {
           this.nextSlide();
         }
       }
@@ -46,12 +46,20 @@ export default {
   },
   mounted() {
     let hashIndex = parseInt(window.location.hash.slice(1), 10)
-    if (isNaN(hashIndex) || hashIndex < 0 || hashIndex > window.__PPT__.length - 1) {
+    if (!(hashIndex >= 0 && hashIndex < this.ppt.length)) {
       hashIndex = 0
     }
 
     window.location.hash = this.slideIndex = hashIndex
     window.addEventListener("keydown", this._keydownCallback);
+
+    const url = `/ppt${window.location.pathname}.md`
+
+    fetch(url)
+      .then(r => r.text())
+      .then(t => {
+        this.ppt = t.split(/[-]{3,40}/)
+      })
   },
   destroyed() {
     window.removeEventListener("keydown", this._keydownCallback);

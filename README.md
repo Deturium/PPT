@@ -3,19 +3,25 @@
 
 ~~什么 PowerPoint，什么 KeyNote，我从来都是高桥流一把梭~~
 
-
-### 基本功能
-
-[x] 高桥流布局
-[x] markdown 到 PPT 生成
-[x] 翻页
-[x] 外链
+这是一个自用的高桥流网页 PPT 生成工具
 
 
-### 增强功能
 
-[ ] 自定义主题
-[ ] 文本内联样式增强
-[ ] PPT 全文搜索
-[ ] PPT 大纲
-[ ] 嵌入第三方 demo（qiankun）
+## 使用方式
+
+1. 下载源码到本地，安装依赖 `yarn`
+
+2. 参考 `takahashi.html` 在 ppt 文件夹下新增你的 ppt 文件
+
+3. 运行项目 `yarn run dev`，随后浏览器打开 `http://localhost:1234/takahashi?theme=a#0`
+
+
+
+## 主题
+
+默认有 a, b, c, d, dark 五套主题，在 URL 中增加 `?theme=dark` 改变主题
+
+![theme-a](./img/theme-a.png)
+![theme-b](./img/theme-b.png)
+![theme-c](./img/theme-c.png)
+![theme-d](./img/theme-d.png)

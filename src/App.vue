@@ -1,6 +1,6 @@
 <template lang="pug">
 .backgroud
-  .ppt-root
+
     ppt
 </template>
 
@@ -29,11 +29,4 @@ export default {
     height 100vh
     color #ccc
     background-color #111
-
-  .ppt-root
-    position fixed
-    left 5%
-    right 5%
-    top 5%
-    bottom 5%
 </style>

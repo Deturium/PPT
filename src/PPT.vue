@@ -34,16 +34,21 @@ export default {
       const pptName = window.location.pathname.slice(1)
       const url = `/ppt/${pptName}.html`;
 
-      if (pptName === '') {
-        this.slides = [
-          'NO PPT'
-        ]
-        return
-      }
-
       fetch(url)
         .then(r => r.text())
         .then(t => {
+
+          // 404 到了 index.html
+          if (t.startsWith('<!DOCTYPE html>')) {
+            this.slides = [
+              `
+              Can't found <b>${pptName}</b>\nPlease check your URL
+              `
+            ]
+            this.slideIndex = 0;
+            return
+          }
+
           this.slides = t.split(/[-]{3,40}/);
 
           // init slideIndex
@@ -55,7 +60,7 @@ export default {
             hashIndex = this.slides.length - 1
           }
           window.location.hash = this.slideIndex = hashIndex;
-        });
+        })
     }
   },
   mounted() {

@@ -13,7 +13,7 @@ export default {
   ],
   computed: {
     lines() {
-      return this.content
+      return (this.content || '')
         .split('\n\n')
         .map(l => l.trim())
         .filter(l => l)
@@ -37,10 +37,17 @@ export default {
 <style lang="stylus">
 .slide
   font-size 16px
+  color: var(--ppt-second-color);
 
   >*
     margin 0
     width fit-content
+
+  b
+    color: var(--ppt-primary-color);
+
+  strong
+    color var(--ppt-highlight-color);
 
   p, div
     white-space pre-wrap
@@ -52,7 +59,7 @@ export default {
     padding-left: .6em
 
   a
-    color: #3f51b5;
+    color: var(--ppt-primary-color);
     text-decoration: none;
 
   a:hover

@@ -53,10 +53,9 @@ export default {
 
           // init slideIndex
           let hashIndex = parseInt(window.location.hash.slice(1), 10);
-          if (hashIndex < 0) {
-            hashIndex = 0;
-          }
-          if (hashIndex >= this.slides.length) {
+          if (isNaN(hashIndex) || hashIndex < 0) {
+            hashIndex = 0
+          } else if (hashIndex >= this.slides.length) {
             hashIndex = this.slides.length - 1
           }
           window.location.hash = this.slideIndex = hashIndex;

@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { scaleFont } from './util'
+import { scaleFont, evalScript } from './util'
 
 export default {
   name: 'slide',
@@ -26,6 +26,7 @@ export default {
   },
   mounted() {
     this._scaleFont()
+    this.lines.map(evalScript)
     window.addEventListener('resize', this._scaleFont)
   },
   destroyed() {
@@ -51,6 +52,9 @@ export default {
 
   p, div
     white-space pre-wrap
+
+  code
+    font-family Consolas, Monaco, monospace
 
   ol, ul
     white-space normal

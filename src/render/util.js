@@ -14,3 +14,16 @@ export function scaleFont(slideDom) {
   const scale = Math.min(innerHeight / slideDom.clientHeight, innerWidth / slideDom.clientWidth)
   slideDom.style.transform = `scale(${scale * 0.74}) `
 }
+
+
+export function evalScript(line) {
+  if (line.startsWith('<script')) {
+    try {
+      const js = line.replace(/<script>([\W\w]*)<\/script>/g, '$1')
+      eval(js)
+    } catch(err) {
+      console.log('[PPT] exec script error: ', err)
+    }
+  }
+  return line
+}
